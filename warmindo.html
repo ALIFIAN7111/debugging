@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warmindo Smoky - Indomie Lezat Sejak Pagi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brown: #8B6F47;
+            --cream: #F5E6D3;
+            --terracotta: #C85A3A;
+            --dark-brown: #5C4033;
+            --light-cream: #FBF7F1;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-cream);
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--dark-brown) 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cream);
+            letter-spacing: 1px;
+        }
+
+        nav .logo span {
+            color: var(--terracotta);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--terracotta);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            nav .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--terracotta) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .hero-text .btn {
+            display: inline-block;
+            background: var(--terracotta);
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .hero-text .btn:hover {
+            background: var(--cream);
+            color: var(--terracotta);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .hero-image {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-text .tagline {
+                font-size: 1rem;
+            }
+            .hero {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 3px;
+            background: var(--terracotta);
+            margin: 0 auto 1rem;
+        }
+
+        .section-title p {
+            color: var(--brown);
+            font-size: 1rem;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .menu-categories {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .menu-categories button {
+            padding: 0.7rem 1.5rem;
+            background: var(--cream);
+            border: 2px solid var(--brown);
+            color: var(--brown);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .menu-categories button.active,
+        .menu-categories button:hover {
+            background: var(--brown);
+            color: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--light-cream);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .menu-card-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #DEB887 0%, #D2A679 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card-content h3 {
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .menu-card-content p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+        }
+
+        .menu-card-price {
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        .menu-card-btn {
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .menu-card-btn:hover {
+            background: var(--brown);
+            transform: scale(1.05);
+        }
+
+        /* Promo Section */
+        .promo {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, #F0DCC6 100%);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .promo-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--terracotta);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .promo-card h3 {
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .promo-card .price {
+            color: var(--terracotta);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Galeri Section */
+        .gallery {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: 250px;
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Testimoni Section */
+        .testimonial {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, #F0DCC6 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .testimonial-card .stars {
+            color: var(--terracotta);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3rem;
+        }
+
+        .testimonial-card p {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-card .name {
+            color: var(--dark-brown);
+            font-weight: bold;
+        }
+
+        /* Lokasi Section */
+        .location {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-info {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .location-info h3 {
+            color: var(--dark-brown);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .location-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .location-info .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info .info-item strong {
+            color: var(--brown);
+            min-width: 80px;
+        }
+
+        .location-map {
+            animation: slideInRight 0.8s ease-out;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .location-btn {
+            display: inline-block;
+            background: var(--terracotta);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .location-btn:hover {
+            background: var(--brown);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-brown) 0%, #3E2723 100%);
+            color: var(--cream);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--terracotta);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--terracotta);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--cream);
+            color: var(--terracotta);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(245, 230, 211, 0.2);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll animation trigger */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">🔥 Warmindo <span>Smoky</span></div>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#promo">Promo</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Warmindo Smoky</h1>
+                <p class="tagline">Indomie Lezat, Harga Bersahabat, Suasana Nyaman</p>
+                <a href="#menu" class="btn">Lihat Menu</a>
+            </div>
+            <div class="hero-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23DAA520' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='120' fill='%23333' font-family='Arial'%3E🍜%3C/text%3E%3C/svg%3E" alt="Indomie Smoky">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Menu Andalan</h2>
+                <div class="line"></div>
+                <p>Pilihan lezat yang memuaskan selera Anda</p>
+            </div>
+
+            <div class="menu-categories">
+                <button class="active" onclick="filterMenu('semua')">Semua</button>
+                <button onclick="filterMenu('indomie-kuah')">Indomie Kuah</button>
+                <button onclick="filterMenu('indomie-goreng')">Indomie Goreng</button>
+                <button onclick="filterMenu('nasi-goreng')">Nasi Goreng</button>
+                <button onclick="filterMenu('minuman')">Minuman</button>
+                <button onclick="filterMenu('cemilan')">Cemilan</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="promo" id="promo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Paket Hemat Harian</h2>
+                <div class="line"></div>
+                <p>Hemat lebih banyak dengan paket bundling kami</p>
+            </div>
+
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <h3>Paket Pagi</h3>
+                    <div class="price">Rp 25.000</div>
+                    <p>Indomie Kuah + Telor + Minuman</p>
+                    <p><small>Tersedia: 06:00 - 11:00</small></p>
+                </div>
+
+                <div class="promo-card">
+                    <h3>Paket Siang</h3>
+                    <div class="price">Rp 30.000</div>
+                    <p>Nasi Goreng + Lauk Pauk + Minuman</p>
+                    <p><small>Tersedia: 11:00 - 15:00</small></p>
+                </div>
+
+                <div class="promo-card">
+                    <h3>Paket Malam</h3>
+                    <div class="price">Rp 28.000</div>
+                    <p>Indomie Goreng + Telur + Es Teh</p>
+                    <p><small>Tersedia: 16:00 - 22:00</small></p>
+                </div>
+
+                <div class="promo-card">
+                    <h3>Paket Rombongan</h3>
+                    <div class="price">Rp 200.000</div>
+                    <p>8x Menu Pilihan + 8x Minuman</p>
+                    <p><small>Pesan 2 jam sebelumnya</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeri">
+        <div class="container">
+            <div class="section-title">
+                <h2>Suasana Kami</h2>
+                <div class="line"></div>
+                <p>Tempat nyaman untuk berkumpul dan menikmati hidangan</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">📸</div>
+                <div class="gallery-item">🍜</div>
+                <div class="gallery-item">👥</div>
+                <div class="gallery-item">✨</div>
+                <div class="gallery-item">☕</div>
+                <div class="gallery-item">🎉</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimoni Pelanggan</h2>
+                <div class="line"></div>
+                <p>Apa kata pelanggan setia kami</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Indomienya enak, harganya terjangkau, dan suasananya cozy. Jadi favorit tempat nongkrong saya!"</p>
+                    <div class="name">- Budi Santoso</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Pemiliknya ramah, porsinya besar, dan berkualitas. Sering beli untuk bawa ke kantor!"</p>
+                    <div class="name">- Siti Nurhaliza</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Paket hematannya oke banget, hemat tapi nggak pelit. Recommend untuk teman-teman!"</p>
+                    <div class="name">- Ahmad Wijaya</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Makanannya fresh, layanannya cepat. Jadi tempat favorit keluarga makan malam!"</p>
+                    <div class="name">- Rina Kusuma</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="lokasi">
+        <div class="container">
+            <div class="section-title">
+                <h2>Temukan Kami</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Warmindo Smoky</h3>
+                    
+                    <div class="info-item">
+                        <strong>📍 Alamat:</strong>
+                        <div>
+                            <p>Jl. Jend. Achmad Yani, Api-Api</p>
+                            <p>Kec. Bontang Utara, Kota Bontang</p>
+                            <p>Kalimantan Timur 75313</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <strong>⏰ Jam Buka:</strong>
+                        <div>
+                            <p>Senin - Jumat: 06:00 - 22:00</p>
+                            <p>Sabtu - Minggu: 06:00 - 23:00</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <strong>📱 Hubungi:</strong>
+                        <div>
+                            <p><a href="https://wa.me/628XXXXXXXXXX" style="color: var(--terracotta); font-weight: bold;">Chat WhatsApp</a></p>
+                        </div>
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/Jl.+Jend.+Achmad+Yani+Api-Api+Bontang" target="_blank" class="location-btn">Lihat di Google Maps</a>
+                </div>
+
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.123456789!2d117.5042!3d0.1307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sJl.%20Jend.%20Achmad%20Yani%20Api-Api!5e0!3m2!1sid!2sid!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Tentang Kami</h4>
+                <p>Warmindo Smoky adalah rumah makan yang menyajikan Indomie dan makanan ringan berkualitas dengan harga terjangkau untuk semua kalangan.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Menu Favorit</h4>
+                <ul>
+                    <li><a href="#menu">Indomie Kuah Spesial</a></li>
+                    <li><a href="#menu">Indomie Goreng Pedas</a></li>
+                    <li><a href="#menu">Nasi Goreng Kampung</a></li>
+                    <li><a href="#menu">Paket Hemat</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Hubungi Kami</h4>
+                <ul>
+                    <li>📱 WhatsApp: <a href="https://wa.me/628XXXXXXXXXX">+62 8XX XXX XXXX</a></li>
+                    <li>📍 Lokasi: Jl. Jend. Achmad Yani, Api-Api</li>
+                    <li>⏰ 06:00 - 22:00 Setiap Hari</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Ikuti Kami</h4>
+                <div class="social-links">
+                    <a href="https://facebook.com" title="Facebook">f</a>
+                    <a href="https://instagram.com" title="Instagram">📷</a>
+                    <a href="https://tiktok.com" title="TikTok">▶</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Warmindo Smoky - Indomie Lezat, Harga Bersahabat | Dibuat dengan ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Data
+        const menuData = {
+            'semua': [
+                { name: 'Indomie Kuah Spesial', price: 15000, category: 'indomie-kuah', desc: 'Indomie kuah dengan lauk telur dan sayuran', emoji: '🍜' },
+                { name: 'Indomie Kuah Pedas', price: 16000, category: 'indomie-kuah', desc: 'Kuah super pedas untuk pecinta pedas', emoji: '🌶️' },
+                { name: 'Indomie Goreng Biasa', price: 15000, category: 'indomie-goreng', desc: 'Goreng dengan bumbu racikan spesial', emoji: '🍜' },
+                { name: 'Indomie Goreng Telur', price: 17000, category: 'indomie-goreng', desc: 'Ditambah 2 butir telur segar', emoji: '🥚' },
+                { name: 'Nasi Goreng Kampung', price: 18000, category: 'nasi-goreng', desc: 'Nasi goreng dengan lauk lengkap', emoji: '🍚' },
+                { name: 'Nasi Goreng Seafood', price: 25000, category: 'nasi-goreng', desc: 'Nasi dengan udang, sotong, dan kepiting', emoji: '🦞' },
+                { name: 'Es Teh Manis', price: 5000, category: 'minuman', desc: 'Teh manis dingin penyejuk', emoji: '🧋' },
+                { name: 'Es Jeruk', price: 6000, category: 'minuman', desc: 'Jeruk segar dengan es batu', emoji: '🍋' },
+                { name: 'Gorengan Telur', price: 8000, category: 'cemilan', desc: 'Telur puyuh goreng renyah', emoji: '🥚' },
+                { name: 'Perkedel', price: 10000, category: 'cemilan', desc: 'Perkedel kentang isi daging', emoji: '🥔' }
+            ]
+        };
+
+        // Initialize menu
+        function initMenu() {
+            displayMenu('semua');
+        }
+
+        function filterMenu(category) {
+            displayMenu(category);
+            
+            // Update button active state
+            document.querySelectorAll('.menu-categories button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function displayMenu(category) {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+
+            let items = menuData['semua'];
+            if (category !== 'semua') {
+                items = items.filter(item => item.category === category);
+            }
+
+            items.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.innerHTML = `
+                    <div class="menu-card-image">${item.emoji}</div>
+                    <div class="menu-card-content">
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">Rp ${item.price.toLocaleString('id-ID')}</span>
+                            <a href="https://wa.me/628XXXXXXXXXX?text=Halo%20Warmindo%20Smoky!%20Saya%20ingin%20pesan%20${encodeURIComponent(item.name)}%20-Rp%20${item.price}" target="_blank" class="menu-card-btn">Pesan</a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Scroll animation
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initMenu();
+            observeElements();
+        });
+    </script>
+</body>
+</html>
